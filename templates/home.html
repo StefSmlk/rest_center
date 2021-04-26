@@ -5,105 +5,113 @@
 {% endblock %}
 {% block body %}
     <div class="text-center">
-        <h1>Добро пожаловать в REST CENTER</h1>
+        <h1>Добро пожаловать в REST CENTER{% if request.user.is_authenticated and request.user.first_name %}<span class="text-capitalize">, {{ request.user.first_name }} !</span>{% endif %}</h1>
     </div>
     <br>
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="clearfix">
-                    <img src="{% static "rest_center/1.jpg" %}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="sunset">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer scelerisque facilisis dictum. Proin
-                        iaculis, nulla ut dignissim venenatis, ante elit semper risus, id hendrerit magna libero ut est.
-                        Nullam
-                        nec ligula facilisis nisi scelerisque vestibulum. Ut tristique augue diam. Duis porttitor erat nec
-                        sapien hendrerit, in pretium ligula convallis. Ut suscipit sit amet urna eget iaculis. In non
-                        lobortis metus.
-                    </p>
-                    <p>
-                        Cras quam justo, maximus consequat sodales nec, euismod id mi. Quisque rutrum feugiat feugiat. Phasellus
-                        vitae felis risus. Aenean diam nisi, porttitor vitae mauris eu, aliquam efficitur turpis. Aenean vitae
-                        mattis massa. Duis tristique tristique varius. Integer id ullamcorper eros. Curabitur ornare augue nec
-                        consequat laoreet.
-                    </p>
-                    <p>
-                        Suspendisse potenti. Integer sit amet venenatis sapien. Sed iaculis nulla felis, et lacinia magna
-                        gravida et. Sed metus libero, pharetra nec facilisis eget, commodo a libero. Donec ullamcorper odio in
-                        ligula elementum, eget tincidunt velit maximus. Curabitur vitae risus pulvinar, lobortis urna rutrum,
-                        finibus neque. Donec eu lorem lectus. Morbi commodo justo sed lectus finibus ornare. Cras gravida
-                        ullamcorper est sit amet fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-                        eget risus laoreet, interdum urna et, blandit nibh. Cras eu pellentesque dui, vel vulputate enim. Sed
-                        placerat sem in massa sagittis, sit amet dictum odio vestibulum. In tristique tellus mauris, quis
-                        dapibus purus rutrum eget. Sed congue dolor consectetur, bibendum nisl ut, efficitur quam.
-                    </p>
-                    <img src="{% static "rest_center/3.jpg" %}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="sunset">
-                    <p>
-                        Proin ut urna justo. Aenean non pretium velit. Integer non libero ac velit pulvinar pharetra. Ut
-                        pellentesque et lorem ac dignissim. Suspendisse mollis convallis viverra. Maecenas pulvinar facilisis
-                        ante at tempor. In sed eros eu ex ultrices eleifend. Sed aliquet orci a augue vulputate lobortis. Donec
-                        et tortor vitae sapien gravida ornare quis vel dolor. Integer tristique leo vitae justo semper congue.
-                        Donec in quam id nisl rhoncus eleifend. In finibus massa id pulvinar vulputate. Etiam a est sit amet
-                        odio ultrices tincidunt vulputate nec justo.
-                    </p>
-                    <p>
-                        Quisque volutpat sapien ut malesuada lacinia. Aenean at nunc a felis consectetur interdum at a urna.
-                        Morbi interdum mollis auctor. Fusce vestibulum laoreet orci eget hendrerit. Ut iaculis lectus dapibus
-                        vestibulum tempor. Sed semper tincidunt sodales. Nunc risus eros, hendrerit nec porttitor ac, sagittis
-                        quis erat. Aliquam cursus porta justo, eu placerat mi lobortis non. Proin eu massa eu risus convallis
-                        mattis. Phasellus eget convallis quam, in fermentum nulla. Curabitur viverra congue lorem eget posuere.
-                        Aliquam et porttitor libero. Mauris eu tempor sem. Praesent dapibus vitae nunc non tincidunt. Donec
-                        venenatis elementum lorem, id finibus arcu. Pellentesque blandit, purus eu ornare imperdiet, libero enim
-                        hendrerit diam, id scelerisque tellus quam vitae tellus.
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer scelerisque facilisis dictum. Proin
-                    iaculis, nulla ut dignissim venenatis, ante elit semper risus, id hendrerit magna libero ut est. Nullam
-                    nec ligula facilisis nisi scelerisque vestibulum. Ut tristique augue diam. Duis porttitor erat nec
-                    sapien hendrerit, in pretium ligula convallis. Ut suscipit sit amet urna eget iaculis. In non lobortis
-                    metus.
-                </p>
-                <p>
-                    Cras quam justo, maximus consequat sodales nec, euismod id mi. Quisque rutrum feugiat feugiat. Phasellus
-                    vitae felis risus. Aenean diam nisi, porttitor vitae mauris eu, aliquam efficitur turpis. Aenean vitae
-                    mattis massa. Duis tristique tristique varius. Integer id ullamcorper eros. Curabitur ornare augue nec
-                    consequat laoreet.
-                </p>
-                <div class="clearfix">
-                    <img src="{% static "rest_center/2.jpg" %}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="sunset">
-                    <p>
-                        Suspendisse potenti. Integer sit amet venenatis sapien. Sed iaculis nulla felis, et lacinia magna
-                        gravida et. Sed metus libero, pharetra nec facilisis eget, commodo a libero. Donec ullamcorper odio in
-                        ligula elementum, eget tincidunt velit maximus. Curabitur vitae risus pulvinar, lobortis urna rutrum,
-                        finibus neque. Donec eu lorem lectus. Morbi commodo justo sed lectus finibus ornare. Cras gravida
-                        ullamcorper est sit amet fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-                        eget risus laoreet, interdum urna et, blandit nibh. Cras eu pellentesque dui, vel vulputate enim. Sed
-                        placerat sem in massa sagittis, sit amet dictum odio vestibulum. In tristique tellus mauris, quis
-                        dapibus purus rutrum eget. Sed congue dolor consectetur, bibendum nisl ut, efficitur quam.
-                    </p>
-                    <p>
-                        Proin ut urna justo. Aenean non pretium velit. Integer non libero ac velit pulvinar pharetra. Ut
-                        pellentesque et lorem ac dignissim. Suspendisse mollis convallis viverra. Maecenas pulvinar facilisis
-                        ante at tempor. In sed eros eu ex ultrices eleifend. Sed aliquet orci a augue vulputate lobortis. Donec
-                        et tortor vitae sapien gravida ornare quis vel dolor. Integer tristique leo vitae justo semper congue.
-                        Donec in quam id nisl rhoncus eleifend. In finibus massa id pulvinar vulputate. Etiam a est sit amet
-                        odio ultrices tincidunt vulputate nec justo.
-                    </p>
-                    <p>
-                        Quisque volutpat sapien ut malesuada lacinia. Aenean at nunc a felis consectetur interdum at a urna.
-                        Morbi interdum mollis auctor. Fusce vestibulum laoreet orci eget hendrerit. Ut iaculis lectus dapibus
-                        vestibulum tempor. Sed semper tincidunt sodales. Nunc risus eros, hendrerit nec porttitor ac, sagittis
-                        quis erat. Aliquam cursus porta justo, eu placerat mi lobortis non. Proin eu massa eu risus convallis
-                        mattis. Phasellus eget convallis quam, in fermentum nulla. Curabitur viverra congue lorem eget posuere.
-                        Aliquam et porttitor libero. Mauris eu tempor sem. Praesent dapibus vitae nunc non tincidunt. Donec
-                        venenatis elementum lorem, id finibus arcu. Pellentesque blandit, purus eu ornare imperdiet, libero enim
-                        hendrerit diam, id scelerisque tellus quam vitae tellus.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <img src="{% static "rest_center/1.jpg" %}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="sunset">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer scelerisque facilisis dictum. Proin
+            iaculis, nulla ut dignissim venenatis, ante elit semper risus, id hendrerit magna libero ut est.
+            Nullam
+            nec ligula facilisis nisi scelerisque vestibulum. Ut tristique augue diam. Duis porttitor erat nec
+            sapien hendrerit, in pretium ligula convallis. Ut suscipit sit amet urna eget iaculis. In non
+            lobortis metus.
+        </p>
+        <p>
+            Cras quam justo, maximus consequat sodales nec, euismod id mi. Quisque rutrum feugiat feugiat. Phasellus
+            vitae felis risus. Aenean diam nisi, porttitor vitae mauris eu, aliquam efficitur turpis. Aenean vitae
+            mattis massa. Duis tristique tristique varius. Integer id ullamcorper eros. Curabitur ornare augue nec
+            consequat laoreet.
+        </p>
+        <p>
+            Suspendisse potenti. Integer sit amet venenatis sapien. Sed iaculis nulla felis, et lacinia magna
+            gravida et. Sed metus libero, pharetra nec facilisis eget, commodo a libero. Donec ullamcorper odio in
+            ligula elementum, eget tincidunt velit maximus. Curabitur vitae risus pulvinar, lobortis urna rutrum,
+            finibus neque. Donec eu lorem lectus. Morbi commodo justo sed lectus finibus ornare. Cras gravida
+            ullamcorper est sit amet fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+            eget risus laoreet, interdum urna et, blandit nibh. Cras eu pellentesque dui, vel vulputate enim. Sed
+            placerat sem in massa sagittis, sit amet dictum odio vestibulum. In tristique tellus mauris, quis
+            dapibus purus rutrum eget. Sed congue dolor consectetur, bibendum nisl ut, efficitur quam.
+        </p>
+        <img src="{% static "rest_center/3.jpg" %}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="sunset">
+        <p>
+            Proin ut urna justo. Aenean non pretium velit. Integer non libero ac velit pulvinar pharetra. Ut
+            pellentesque et lorem ac dignissim. Suspendisse mollis convallis viverra. Maecenas pulvinar facilisis
+            ante at tempor. In sed eros eu ex ultrices eleifend. Sed aliquet orci a augue vulputate lobortis. Donec
+            et tortor vitae sapien gravida ornare quis vel dolor. Integer tristique leo vitae justo semper congue.
+            Donec in quam id nisl rhoncus eleifend. In finibus massa id pulvinar vulputate. Etiam a est sit amet
+            odio ultrices tincidunt vulputate nec justo.
+        </p>
+        <p>
+            Quisque volutpat sapien ut malesuada lacinia. Aenean at nunc a felis consectetur interdum at a urna.
+            Morbi interdum mollis auctor. Fusce vestibulum laoreet orci eget hendrerit. Ut iaculis lectus dapibus
+            vestibulum tempor. Sed semper tincidunt sodales. Nunc risus eros, hendrerit nec porttitor ac, sagittis
+            quis erat. Aliquam cursus porta justo, eu placerat mi lobortis non. Proin eu massa eu risus convallis
+            mattis. Phasellus eget convallis quam, in fermentum nulla. Curabitur viverra congue lorem eget posuere.
+            Aliquam et porttitor libero. Mauris eu tempor sem. Praesent dapibus vitae nunc non tincidunt. Donec
+            venenatis elementum lorem, id finibus arcu. Pellentesque blandit, purus eu ornare imperdiet, libero enim
+            hendrerit diam, id scelerisque tellus quam vitae tellus.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer scelerisque facilisis dictum. Proin
+            iaculis, nulla ut dignissim venenatis, ante elit semper risus, id hendrerit magna libero ut est. Nullam
+            nec ligula facilisis nisi scelerisque vestibulum. Ut tristique augue diam. Duis porttitor erat nec
+            sapien hendrerit, in pretium ligula convallis. Ut suscipit sit amet urna eget iaculis. In non loborti metus.
+        </p>
+        <p>
+            Cras quam justo, maximus consequat sodales nec, euismod id mi. Quisque rutrum feugiat feugiat. Phasellus
+            vitae felis risus. Aenean diam nisi, porttitor vitae mauris eu, aliquam efficitur turpis. Aenean vitae
+            mattis massa. Duis tristique tristique varius. Integer id ullamcorper eros. Curabitur ornare augue nec
+            consequat laoreet.
+        </p>
+        <img src="{% static "rest_center/2.jpg" %}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="sunset">
+        <p>
+            Suspendisse potenti. Integer sit amet venenatis sapien. Sed iaculis nulla felis, et lacinia magna
+            gravida et. Sed metus libero, pharetra nec facilisis eget, commodo a libero. Donec ullamcorper odio in
+            ligula elementum, eget tincidunt velit maximus. Curabitur vitae risus pulvinar, lobortis urna rutrum,
+            finibus neque. Donec eu lorem lectus. Morbi commodo justo sed lectus finibus ornare. Cras gravida
+            ullamcorper est sit amet fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+            eget risus laoreet, interdum urna et, blandit nibh. Cras eu pellentesque dui, vel vulputate enim. Sed
+            placerat sem in massa sagittis, sit amet dictum odio vestibulum. In tristique tellus mauris, quis
+            dapibus purus rutrum eget. Sed congue dolor consectetur, bibendum nisl ut, efficitur quam.
+        </p>
+        <p>
+            Proin ut urna justo. Aenean non pretium velit. Integer non libero ac velit pulvinar pharetra. Ut
+            pellentesque et lorem ac dignissim. Suspendisse mollis convallis viverra. Maecenas pulvinar facilisis
+            ante at tempor. In sed eros eu ex ultrices eleifend. Sed aliquet orci a augue vulputate lobortis. Donec
+            et tortor vitae sapien gravida ornare quis vel dolor. Integer tristique leo vitae justo semper congue.
+            Donec in quam id nisl rhoncus eleifend. In finibus massa id pulvinar vulputate. Etiam a est sit amet
+            odio ultrices tincidunt vulputate nec justo.
+        </p>
+        <img src="{% static "rest_center/4.jpg" %}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="sunset">
+        <p>
+            Quisque volutpat sapien ut malesuada lacinia. Aenean at nunc a felis consectetur interdum at a urna.
+            Morbi interdum mollis auctor. Fusce vestibulum laoreet orci eget hendrerit. Ut iaculis lectus dapibus
+            vestibulum tempor. Sed semper tincidunt sodales. Nunc risus eros, hendrerit nec porttitor ac, sagittis
+            quis erat. Aliquam cursus porta justo, eu placerat mi lobortis non. Proin eu massa eu risus convallis
+            mattis. Phasellus eget convallis quam, in fermentum nulla. Curabitur viverra congue lorem eget posuere.
+            Aliquam et porttitor libero. Mauris eu tempor sem. Praesent dapibus vitae nunc non tincidunt. Donec
+            venenatis elementum lorem, id finibus arcu. Pellentesque blandit, purus eu ornare imperdiet, libero enim
+            hendrerit diam, id scelerisque tellus quam vitae tellus.
+        </p>
+        <p>
+            Quisque volutpat sapien ut malesuada lacinia. Aenean at nunc a felis consectetur interdum at a urna.
+            Morbi interdum mollis auctor. Fusce vestibulum laoreet orci eget hendrerit. Ut iaculis lectus dapibus
+            vestibulum tempor. Sed semper tincidunt sodales. Nunc risus eros, hendrerit nec porttitor ac, sagittis
+            quis erat. Aliquam cursus porta justo, eu placerat mi lobortis non. Proin eu massa eu risus convallis
+            mattis. Phasellus eget convallis quam, in fermentum nulla. Curabitur viverra congue lorem eget posuere.
+            Aliquam et porttitor libero. Mauris eu tempor sem. Praesent dapibus vitae nunc non tincidunt. Donec
+            venenatis elementum lorem, id finibus arcu. Pellentesque blandit, purus eu ornare imperdiet, libero enim
+            hendrerit diam, id scelerisque tellus quam vitae tellus.
+        </p>
+        <p>
+            Proin ut urna justo. Aenean non pretium velit. Integer non libero ac velit pulvinar pharetra. Ut
+            pellentesque et lorem ac dignissim. Suspendisse mollis convallis viverra. Maecenas pulvinar facilisis
+            ante at tempor. In sed eros eu ex ultrices eleifend. Sed aliquet orci a augue vulputate lobortis. Donec
+            et tortor vitae sapien gravida ornare quis vel dolor. Integer tristique leo vitae justo semper congue.
+            Donec in quam id nisl rhoncus eleifend. In finibus massa id pulvinar vulputate. Etiam a est sit amet
+            odio ultrices tincidunt vulputate nec justo.
+        </p>
     </div>
 {% endblock %}

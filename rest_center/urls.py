@@ -18,9 +18,19 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from rest_center import views
+from rest_center.views import home
+from rooms.views import rooms_list, rooms_booking
+from accounts.views import sign_up_view, login_view, logout_view
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('', views.home, name='home'),
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+                  path('', home, name='home'),
+                  path('rooms/', rooms_list, name='rooms'),
+                  path('account/create/', sign_up_view, name='sign_up'),
+                  path('account/login/', login_view, name='login'),
+                  path('account/logout/', logout_view, name='logout'),
+                  path('rooms/booking/<int:room_id>/', rooms_booking, name='booking'),
+              ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

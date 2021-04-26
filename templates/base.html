@@ -12,38 +12,51 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{% url 'home' %}">REST CENTER</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <li class="nav-item">
+                  {% if request.user.is_authenticated and request.user.first_name %}
+                      <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+                  {% else %}
+                      <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                  {% endif %}
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
+                Горнолыжный курорт
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">О склоне</a></li>
+                <li><a class="dropdown-item" href="#">Аренда оборудования</a></li>
+              </ul>
+            </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Отель
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Общая информация</a></li>
+                <li><a class="dropdown-item" href="{% url 'rooms' %}">Забронировать номер</a></li>
+              </ul>
+            </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Ресторан
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Интересное</a></li>
+                <li><a class="dropdown-item" href="#">Меню</a></li>
+                <li><a class="dropdown-item" href="#">Забронировать столик</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Прогноз погоды</a>
             </li>
           </ul>
-            <span class="navbar-text">
-                <a href="#" class="text-decoration-none">
-                    Лучший отдых вмесете с нами (фотографии)
-                </a>
-            </span>
         </div>
       </div>
     </nav>
@@ -51,10 +64,10 @@
         {% block body %}{% endblock %}
     </div>
 
-    <footer class="bg-dark text-white mt-5 p-5">
+    <footer class="bg-dark text-white p-5">
         <div class="container">
             <ul>
-                <li class="d-block">контактный номер: <a href="tel:+79605444279" class="text-decoration-none">+7 (910) 000 00 00 </a></li>
+                <li class="d-block">контактный номер: <a href="tel:+79100000000" class="text-decoration-none">+7 (910) 000 00 00 </a></li>
                 <li class="d-block">email: <a href="mailto:someemail@gmail.com" class="text-decoration-none">someemail@gmail.com</a>
                 </li>
             </ul>
