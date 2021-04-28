@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Погода
+{% endblock %}
+{% block body %}
+    <h1 class="text-center">Погода на курорте</h1>
+    <br>
+    <br>
+    {% for day in weather %}
+        <table class="table">
+            <tbody>
+                {% for part in day %}
+                    <tr>
+                        <td>{{ part }}</td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        <br>
+    {% endfor %}
+{% endblock %}

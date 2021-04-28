@@ -21,6 +21,7 @@ from django.urls import path
 from rest_center.views import home
 from rooms.views import rooms_list, rooms_booking
 from accounts.views import sign_up_view, login_view, logout_view
+from forecasts.views import forecast_view
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
@@ -30,6 +31,7 @@ urlpatterns = [
                   path('account/login/', login_view, name='login'),
                   path('account/logout/', logout_view, name='logout'),
                   path('rooms/booking/<int:room_id>/', rooms_booking, name='booking'),
+                  path('forecast/', forecast_view, name='forecast'),
               ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

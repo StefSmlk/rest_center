@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rooms',
     'accounts',
     'crispy_forms',
+    'forecasts',
 ]
 
 MIDDLEWARE = [
