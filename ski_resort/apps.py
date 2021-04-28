@@ -1,0 +1,5 @@
+from django.apps import AppConfig
+
+
+class SkiResortConfig(AppConfig):
+    name = 'ski_resort'

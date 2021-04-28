@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'crispy_forms',
     'forecasts',
+    'ski_resort',
 ]
 
 MIDDLEWARE = [

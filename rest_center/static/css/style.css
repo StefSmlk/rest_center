@@ -2,7 +2,31 @@
     background-color: azure;
 }
 
+.bg-map {
+    background-image: url('../rest_center/10.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
 img {
   width: 100%;
   display: inline-block;
+}
+
+.color-red {
+    color: crimson;
+}
+
+.mar-left-1000 {
+    margin-left: 1000px;
+}
+
+.mar-left-600 {
+    margin-left: 600px;
+}
+
+.mar-left-700 {
+    margin-left: 700px;
 }

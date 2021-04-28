@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Аренда оборудования
+{% endblock %}
+{% block body %}
+    <div class="card-group">
+        <div class="card">
+            <img src="{% static 'rest_center/112.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Сноуборды</h5>
+          </div>
+            <div class="card-footer">
+            <a href="{% url 'boards' %}" class="btn btn-primary">Выбрать</a>
+          </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'rest_center/111.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Горные лыжи</h5>
+          </div>
+            <div class="card-footer">
+            <a href="{% url 'skis' %}" class="btn btn-primary">Выбрать</a>
+          </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'rest_center/boots.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Ботинки</h5>
+          </div>
+            <div class="card-footer">
+            <a href="{% url 'boots' %}" class="btn btn-primary">Выбрать</a>
+          </div>
+        </div>
+    </div>
+{% endblock %}

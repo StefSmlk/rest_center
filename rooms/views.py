@@ -19,9 +19,5 @@ def rooms_booking(request, room_id):
     return render(request, 'rooms/rooms_booking.html', {'context': context, 'room': room})
 
 
-class CityCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
-    model = RoomModel
-    form_class = RoomBookForm
-    template_name = 'rooms/rooms_booking.html'
-    success_url = reverse_lazy('')
-    success_message = 'Номер успешно забронирован'
+def hotel_view(request):
+    return render(request, 'rooms/hotel.html')
