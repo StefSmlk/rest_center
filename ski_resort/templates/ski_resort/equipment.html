@@ -6,30 +6,36 @@
 {% block body %}
     <div class="card-group">
         <div class="card">
-            <img src="{% static 'rest_center/112.jpg' %}" class="card-img-top" alt="...">
+            <img src="{% static 'rest_center/112.jpg' %}" class="card-img-same" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Сноуборды</h5>
-          </div>
-            <div class="card-footer">
-            <a href="{% url 'boards' %}" class="btn btn-primary">Выбрать</a>
+            <table class="table table-borderless">
+                <tr>
+                    <h3>Сноуборды</h3>
+                    <td class="text-end"> <a href="{% url 'boards' %}" class="btn btn-primary">Выбрать</a> </td>
+                </tr>
+            </table>
           </div>
         </div>
         <div class="card">
-            <img src="{% static 'rest_center/111.jpg' %}" class="card-img-top" alt="...">
+            <img src="{% static 'rest_center/111.jpg' %}" class="card-img-same" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Горные лыжи</h5>
-          </div>
-            <div class="card-footer">
-            <a href="{% url 'skis' %}" class="btn btn-primary">Выбрать</a>
+            <table class="table table-borderless">
+                <tr>
+                    <h3>Лыжи</h3>
+                    <td class="text-end"> <a href="{% url 'skis' %}" class="btn btn-primary">Выбрать</a> </td>
+                </tr>
+            </table>
           </div>
         </div>
         <div class="card">
-            <img src="{% static 'rest_center/boots.jpg' %}" class="card-img-top" alt="...">
+            <img src="{% static 'rest_center/boots.jpg' %}" class="card-img-same" alt="...">
           <div class="card-body">
-              <h5 class="card-title">Ботинки</h5>
-          </div>
-            <div class="card-footer">
-            <a href="{% url 'boots' %}" class="btn btn-primary">Выбрать</a>
+            <table class="table table-borderless">
+                <tr>
+                    <h3>Ботинки</h3>
+                    <td class="text-end"> <a href="{% url 'boots' %}" class="btn btn-primary">Выбрать</a> </td>
+                </tr>
+            </table>
           </div>
         </div>
     </div>

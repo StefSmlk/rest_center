@@ -7,16 +7,54 @@
     <h1 class="text-center">Погода на курорте</h1>
     <br>
     <br>
-    {% for day in weather %}
-        <table class="table">
-            <tbody>
-                {% for part in day %}
-                    <tr>
-                        <td>{{ part }}</td>
-                    </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-        <br>
+<table class="table">
+
+    {% for item in weather %}
+        {% if item.6 %}
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <td colspan="2"><h1 class="text-center">{{ item.6 }}</h1></td>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <td>
+                <div class="card card-bg">
+                    <br>
+                    <h1 class="text-center">{{ item.3 }}</h1>
+                    <p class="text-center">{{ item.0 }} </p>
+                        <div class="card-body">
+                            <p class="card-text text-center">на улице {{ item.1 }}</p>
+                            <p class="card-text text-center">ветер {{ item.5 }}</p>
+                            <p class="card-text text-center"> {{ item.4 }} м/с</p>
+                            <p class="card-text text-center">{{ item.2 }} &#8451;</p>
+                        </div>
+                </div>
+            </td>
+        {% else %}
+            <td>
+                <div class="card card-bg">
+                    <br>
+                    <h1 class="text-center">{{ item.3 }}</h1>
+                    <p class="text-center">{{ item.0 }} </p>
+                        <div class="card-body">
+                            <p class="card-text text-center">на улице {{ item.1 }}</p>
+                            <p class="card-text text-center">ветер {{ item.5 }}</p>
+                            <p class="card-text text-center"> {{ item.4 }} м/с</p>
+                            <p class="card-text text-center">{{ item.2 }} &#8451;</p>
+                        </div>
+                </div>
+            </td>
+        {% endif %}
     {% endfor %}
+    </tbody>
+</table>
+
+
 {% endblock %}

@@ -2,6 +2,7 @@ import json
 
 import requests
 from django.shortcuts import render
+from django.utils.safestring import mark_safe
 
 
 # Create your views here.
@@ -14,42 +15,61 @@ def forecast_view(request):
             'q': city_name, 'units': 'metric', 'lang': 'ru', 'appid': key
         })
     data = response.json()
-    weather_tmp = []
+    temp = ''
     weather_lst = []
+    wind_tmp_str = [
+        'восточный',
+        'северо-восточный',
+        'северный',
+        'северо-западный',
+        'западный',
+        'юго-западный',
+        'южный',
+        'юго-восточный',
+        'восточный'
+    ]
+    wind_tmp_num = [
+        list(range(0, 23)),
+        list(range(23, 68)),
+        list(range(69, 113)),
+        list(range(114, 158)),
+        list(range(159, 203)),
+        list(range(204, 248)),
+        list(range(249, 293)),
+        list(range(293, 338)),
+        list(range(339, 361))
+    ]
     for i in range(len(data['list'])):
+        num = -1
+        wind_speed = data['list'][i]['wind']['speed']
+        wind_dir = data['list'][i]['wind']['deg']
         date = data['list'][i]['dt_txt']
         sky = data['list'][i]['weather'][0]['description']
-        if len(weather_tmp) == 0:
-            weather_tmp.append(date.split()[0])
-        if date.split()[0] not in weather_tmp:
-            weather_lst.append(weather_tmp)
-            weather_tmp = [date.split()[0]]
-        temp_evening = None
-        temp_afternoon = None
-        temp_morning = None
-        temp_night = None
-        if "06:00:00" in date and date.split()[0] in weather_tmp:
-            temp_morning = round(data['list'][i]['main']['temp'])
-            if temp_morning > 0:
-                temp_morning = f'+{temp_morning}'
-        if "12:00:00" in date and date.split()[0] in weather_tmp:
-            temp_afternoon = round(data['list'][i]['main']['temp'])
-            if temp_afternoon > 0:
-                temp_afternoon = f'+{temp_afternoon}'
-        if "18:00:00" in date and date.split()[0] in weather_tmp:
-            temp_evening = round(data['list'][i]['main']['temp'])
-            if temp_evening > 0:
-                temp_evening = f'+{temp_evening}'
-        if "00:00:00" in date and date.split()[0] in weather_tmp:
-            temp_night = round(data['list'][i]['main']['temp'])
-            if temp_night > 0:
-                temp_night = f'+{temp_night}'
-        if temp_night:
-            weather_tmp.append(f'ночью температура: {temp_night}, на улице {sky}')
-        if temp_morning:
-            weather_tmp.append(f'утром температура: {temp_morning}, на улице {sky}')
-        if temp_afternoon:
-            weather_tmp.append(f'днем температура: {temp_afternoon}, на улице {sky}')
-        if temp_evening:
-            weather_tmp.append(f'вечером температура: {temp_evening}, на улице {sky}')
+        temperature = round(data['list'][i]['main']['temp'])
+        if temperature > 0:
+            temperature = '+'+str(temperature)
+        for nums in wind_tmp_num:
+            if wind_dir not in nums:
+                num += 1
+            else:
+                break
+        wind_dir = wind_tmp_str[num]
+        if 'облачно' in sky:
+            temp = mark_safe('&#9925;')
+        if 'ясно' in sky:
+            temp = mark_safe('&#9728;')
+        if 'дождь' in sky:
+            temp = mark_safe('&#9926;')
+        if 'пасмурно' in sky:
+            temp = mark_safe('&#9729;')
+        if 'снег' in sky:
+            temp = mark_safe('&#10052;')
+        if 'гроза' in sky:
+            temp = mark_safe('&#9928;')
+        exist = any([date.split()[0] in days for days in weather_lst])
+        if exist:
+            weather_lst.append([date.split()[1], sky, temperature, temp, wind_speed, wind_dir])
+        else:
+            weather_lst.append([date.split()[1], sky, temperature, temp, wind_speed, wind_dir, date.split()[0]])
+
     return render(request, 'forecasts/forecast.html', {'weather': weather_lst})

@@ -11,3 +11,6 @@ class RoomModel(models.Model):
     class Meta:
         verbose_name = 'Номер'
         verbose_name_plural = 'Номера'
+
+    def __str__(self):
+        return self.name

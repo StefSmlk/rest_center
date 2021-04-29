@@ -12,12 +12,12 @@ def equipment_view(request):
 
 
 def boards_view(request):
-    context = SkiRentModel.objects
+    context = BoardRentModel.objects
     return render(request, 'ski_resort/board.html', {'context': context})
 
 
 def skis_view(request):
-    context = BoardRentModel.objects
+    context = SkiRentModel.objects
     return render(request, 'ski_resort/skis.html', {'context': context})
 
 
