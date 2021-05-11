@@ -15,8 +15,15 @@
             <div class="col align-self-end">
                 <form method="post">
                     {% csrf_token %}
-                    <h5 class="text-center">{{ room.calendar_start.label }} : {{ room.calendar_start }}</h5>
-                    <h5 class="text-center">{{ room.calendar_end.label }} : {{ room.calendar_end }}</h5>
+                    <h5 class="text-center">{{ room.calendar_start.label }} :
+                        <label>
+                            <input type="date" class="form-control" name="calendar_start">
+                        </label></h5>
+                    <h5 class="text-center">{{ room.calendar_end.label }} : 
+                        <label>
+                            <input type="date" class="form-control" name="calendar_end">
+                        </label></h5>
+                     <input type="submit" value="Submit">
                 </form>
             </div>
         </div>

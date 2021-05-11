@@ -7,54 +7,45 @@
     <h1 class="text-center">Погода на курорте</h1>
     <br>
     <br>
-<table class="table">
 
-    {% for item in weather %}
-        {% if item.6 %}
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <td colspan="2"><h1 class="text-center">{{ item.6 }}</h1></td>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <td>
-                <div class="card card-bg">
-                    <br>
-                    <h1 class="text-center">{{ item.3 }}</h1>
-                    <p class="text-center">{{ item.0 }} </p>
-                        <div class="card-body">
-                            <p class="card-text text-center">на улице {{ item.1 }}</p>
-                            <p class="card-text text-center">ветер {{ item.5 }}</p>
-                            <p class="card-text text-center"> {{ item.4 }} м/с</p>
-                            <p class="card-text text-center">{{ item.2 }} &#8451;</p>
-                        </div>
-                </div>
-            </td>
-        {% else %}
-            <td>
-                <div class="card card-bg">
-                    <br>
-                    <h1 class="text-center">{{ item.3 }}</h1>
-                    <p class="text-center">{{ item.0 }} </p>
-                        <div class="card-body">
-                            <p class="card-text text-center">на улице {{ item.1 }}</p>
-                            <p class="card-text text-center">ветер {{ item.5 }}</p>
-                            <p class="card-text text-center"> {{ item.4 }} м/с</p>
-                            <p class="card-text text-center">{{ item.2 }} &#8451;</p>
-                        </div>
-                </div>
-            </td>
-        {% endif %}
+    {% for ite in date %}
+        <a class="btn" onclick="showText('{{ ite.0 }}', '{{ ite.1 }}', '{{ ite.2 }}', '{{ ite.3 }}', '{{ ite.4 }}', '{{ ite.5 }}')" href="javascript:void(0);">{{ ite.6 }}</a>
     {% endfor %}
-    </tbody>
-</table>
 
 
+    {% for part in weather %}
+        <div class="hide" id="{{ part.0.0 }}">
+            <table class="table">
+                {% for item in part %}
+                    <td>
+                        <div class="card card-bg">
+                            <br>
+                            <h1 class="text-center">{{ item.4 }}</h1>
+                            <p class="text-center">{{ item.1 }} </p>
+                            <div class="card-body">
+                                <p class="card-text text-center">на улице {{ item.2 }}</p>
+                                <p class="card-text text-center">ветер {{ item.6 }}</p>
+                                <p class="card-text text-center"> {{ item.5 }} м/с</p>
+                                <h2 class="card-text text-center">{{ item.3 }} &#8451;</h2>
+                            </div>
+                        </div>
+                    </td>
+                {% endfor %}
+            </table>
+        </div>
+    {% endfor %}
+
+    <script>
+        function showText(text1, text2, text3, text4, text5, text6)
+        {
+            document.getElementById(text1).className = "show";
+            document.getElementById(text2).className = "hide";
+            document.getElementById(text3).className = "hide";
+            document.getElementById(text4).className = "hide";
+            document.getElementById(text5).className = "hide";
+            document.getElementById(text6).className = "hide";
+        }
+        let elements = document.querySelectorAll('id = text1');
+        alert(elements);
+    </script>
 {% endblock %}

@@ -16,7 +16,12 @@ def forecast_view(request):
         })
     data = response.json()
     temp = ''
+    tmp_str = ''
+    tmp_num = 0
+    tmp_lst = ['collapse1', 'collapse2', 'collapse3', 'collapse4', 'collapse5', 'collapse6']
     weather_lst = []
+    tmp_weather_lst = []
+    date_lst = []
     wind_tmp_str = [
         'восточный',
         'северо-восточный',
@@ -40,20 +45,17 @@ def forecast_view(request):
         list(range(339, 361))
     ]
     for i in range(len(data['list'])):
-        num = -1
-        wind_speed = data['list'][i]['wind']['speed']
+        wind_speed = round(data['list'][i]['wind']['speed'], 1)
         wind_dir = data['list'][i]['wind']['deg']
         date = data['list'][i]['dt_txt']
         sky = data['list'][i]['weather'][0]['description']
         temperature = round(data['list'][i]['main']['temp'])
+        for j in range(len(wind_tmp_num)):
+            if wind_dir in wind_tmp_num[j]:
+                wind_dir = wind_tmp_str[j]
+                break
         if temperature > 0:
             temperature = '+'+str(temperature)
-        for nums in wind_tmp_num:
-            if wind_dir not in nums:
-                num += 1
-            else:
-                break
-        wind_dir = wind_tmp_str[num]
         if 'облачно' in sky:
             temp = mark_safe('&#9925;')
         if 'ясно' in sky:
@@ -66,10 +68,19 @@ def forecast_view(request):
             temp = mark_safe('&#10052;')
         if 'гроза' in sky:
             temp = mark_safe('&#9928;')
-        exist = any([date.split()[0] in days for days in weather_lst])
-        if exist:
-            weather_lst.append([date.split()[1], sky, temperature, temp, wind_speed, wind_dir])
-        else:
-            weather_lst.append([date.split()[1], sky, temperature, temp, wind_speed, wind_dir, date.split()[0]])
-
-    return render(request, 'forecasts/forecast.html', {'weather': weather_lst})
+        exist = any([date.split()[0] in days for days in date_lst])
+        if not exist:
+            if tmp_weather_lst:
+                weather_lst.append(tmp_weather_lst)
+            tmp_weather_lst = []
+            tmp_num += 1
+            tmp_str = 'collapse' + str(tmp_num)
+            date_lst_tmp = [tmp_str]
+            for k in tmp_lst:
+                if k not in date_lst_tmp:
+                    date_lst_tmp.append(k)
+            date_lst_tmp.append(date.split()[0])
+            date_lst.append(date_lst_tmp)
+        tmp_weather_lst.append([tmp_str, date.split()[1], sky, temperature, temp, wind_speed, wind_dir])
+    weather_lst.append(tmp_weather_lst)
+    return render(request, 'forecasts/forecast.html', {'weather': weather_lst, 'date': date_lst})

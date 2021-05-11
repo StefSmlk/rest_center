@@ -1,9 +1,10 @@
 from django import forms
-from django.contrib.admin import widgets
 
-from rooms.models import RoomModel
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class RoomBookForm(forms.Form):
-    calendar_start = forms.DateField(label='выберите дату заезда', widget=forms.SelectDateWidget())
-    calendar_end = forms.DateField(label='выберите дату выезда', widget=forms.SelectDateWidget())
+    calendar_start = forms.DateField(label='выберите дату заезда', widget=DateInput())
+    calendar_end = forms.DateField(label='выберите дату выезда', widget=DateInput())

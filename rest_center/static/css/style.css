@@ -47,3 +47,6 @@ img {
 .card-bg {
     background-color: rgba(225, 184, 255, 0.5);
 }
+
+div.hide { display:none }
+div.show { display:block }
