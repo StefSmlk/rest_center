@@ -4,19 +4,40 @@
     Погода
 {% endblock %}
 {% block body %}
+    <div class="container-fluid gradient">
     <h1 class="text-center">Погода на курорте</h1>
     <br>
-    <br>
 
-    {% for ite in date %}
-        <a class="btn" onclick="showText('{{ ite.0 }}', '{{ ite.1 }}', '{{ ite.2 }}', '{{ ite.3 }}', '{{ ite.4 }}', '{{ ite.5 }}')" href="javascript:void(0);">{{ ite.6 }}</a>
-    {% endfor %}
+    <div class="text-center">
+        <h1>{{ weather.0.0.4 }} {{ weather.0.0.3 }} &#8451;</h1>
+        <h3>{{ weather.0.0.2 }}</h3>
+        <h3>ветер {{ weather.0.0.5 }} м/с</h3>
+    </div>
+
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+        {% for day in date %}
+            <div class="col-sm-2">
+                <div class="card">
+                    <a class="btn gradient" onclick="showText('{{ day.0 }}', '{{ day.1 }}', '{{ day.2 }}', '{{ day.3 }}', '{{ day.4 }}', '{{ day.5 }}')" href="javascript:void(0);">
+                        <h3>{{ day.6.2 }} {{ day.6.1 }}</h3>
+                        <h2>&#127757;</h2>
+                        <h3>{{ day.6.0 }}</h3>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
 
 
     {% for part in weather %}
         <div class="hide" id="{{ part.0.0 }}">
             <table class="table">
                 {% for item in part %}
+                    {% if item.0 %}
                     <td>
                         <div class="card card-bg">
                             <br>
@@ -30,10 +51,17 @@
                             </div>
                         </div>
                     </td>
+                    {% else %}
+                        <td>
+                            <div class="card card-bg">
+                            </div>
+                        </td>
+                    {% endif %}
                 {% endfor %}
             </table>
         </div>
     {% endfor %}
+    </div>
 
     <script>
         function showText(text1, text2, text3, text4, text5, text6)

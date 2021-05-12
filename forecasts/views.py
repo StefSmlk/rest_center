@@ -22,6 +22,20 @@ def forecast_view(request):
     weather_lst = []
     tmp_weather_lst = []
     date_lst = []
+    tmp_months = [
+        'января',
+        'февраля',
+        'марта',
+        'апреля',
+        'мая',
+        'июня',
+        'июля',
+        'августа',
+        'сентября',
+        'октября',
+        'ноября',
+        'декабря',
+    ]
     wind_tmp_str = [
         'восточный',
         'северо-восточный',
@@ -61,7 +75,7 @@ def forecast_view(request):
         if 'ясно' in sky:
             temp = mark_safe('&#9728;')
         if 'дождь' in sky:
-            temp = mark_safe('&#9926;')
+            temp = mark_safe('&#9748;')
         if 'пасмурно' in sky:
             temp = mark_safe('&#9729;')
         if 'снег' in sky:
@@ -71,6 +85,8 @@ def forecast_view(request):
         exist = any([date.split()[0] in days for days in date_lst])
         if not exist:
             if tmp_weather_lst:
+                while len(tmp_weather_lst) < 8:
+                    tmp_weather_lst.append([])
                 weather_lst.append(tmp_weather_lst)
             tmp_weather_lst = []
             tmp_num += 1
@@ -82,5 +98,12 @@ def forecast_view(request):
             date_lst_tmp.append(date.split()[0])
             date_lst.append(date_lst_tmp)
         tmp_weather_lst.append([tmp_str, date.split()[1], sky, temperature, temp, wind_speed, wind_dir])
+    while len(tmp_weather_lst) < 8:
+        tmp_weather_lst.append([])
     weather_lst.append(tmp_weather_lst)
+    for part in date_lst:
+        parts = part[6].split('-')
+        part.pop()
+        parts[1] = tmp_months[int(parts[1])-1]
+        part.append(parts)
     return render(request, 'forecasts/forecast.html', {'weather': weather_lst, 'date': date_lst})
