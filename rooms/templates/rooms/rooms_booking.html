@@ -15,15 +15,15 @@
             <div class="col align-self-end">
                 <form method="post">
                     {% csrf_token %}
-                    <h5 class="text-center">{{ room.calendar_start.label }} :
-                        <label>
-                            <input type="date" class="form-control" name="calendar_start">
-                        </label></h5>
-                    <h5 class="text-center">{{ room.calendar_end.label }} : 
-                        <label>
-                            <input type="date" class="form-control" name="calendar_end">
-                        </label></h5>
-                     <input type="submit" value="Submit">
+                    <h5 class="text-center">{{ room.start.label }} :
+                        {{ room.start }}
+                    </h5>
+                    <h5 class="text-center">{{ room.end.label }} :
+                        {{ room.end }}
+                    </h5>
+                     <button type="submit" class="btn btn-secondary">
+                         забронировать
+                     </button>
                 </form>
             </div>
         </div>

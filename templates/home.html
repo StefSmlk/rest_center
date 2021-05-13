@@ -5,7 +5,7 @@
 {% endblock %}
 {% block body %}
     <div class="text-center">
-        <h1>Добро пожаловать в REST CENTER{% if request.user.is_authenticated and request.user.first_name %}<span class="text-capitalize">, {{ request.user.first_name }} !</span>{% endif %}</h1>
+        <h1>Добро пожаловать в REST CENTER{% if user.is_authenticated and user.username %}<span class="text-capitalize">, {{ user.username }} !</span>{% endif %}</h1>
     </div>
     <br>
     <div class="container">

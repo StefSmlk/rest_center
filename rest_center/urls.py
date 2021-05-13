@@ -20,7 +20,7 @@ from django.urls import path
 
 from rest_center.views import home
 from rooms.views import rooms_list, rooms_booking, hotel_view
-from accounts.views import sign_up_view, login_view, logout_view
+from accounts.views import login_view, logout_view, sign_up_view
 from forecasts.views import forecast_view
 from ski_resort.views import map_view, equipment_view, boards_view, skis_view, boots_view
 

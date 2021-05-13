@@ -1,9 +1,6 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.shortcuts import render, get_object_or_404, redirect
 
+from accounts.forms import User
 from .models import RoomModel
 from .forms import RoomBookForm
 
@@ -15,8 +12,15 @@ def rooms_list(request):
 
 def rooms_booking(request, room_id):
     context = get_object_or_404(RoomModel, pk=room_id)
-    room = RoomBookForm(request.POST or None)
-    return render(request, 'rooms/rooms_booking.html', {'context': context, 'room': room})
+    if request.method == 'POST':
+        form = RoomBookForm(request.POST)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.name = User.objects.get(username=request.user.username)
+            new_form.save()
+    else:
+        form = RoomBookForm()
+    return render(request, 'rooms/rooms_booking.html', {'context': context, 'room': form})
 
 
 def hotel_view(request):
