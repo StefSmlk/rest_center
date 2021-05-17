@@ -20,8 +20,7 @@ class BookingRoomModel(models.Model):
     start = models.DateField(verbose_name='дата заезда')
     end = models.DateField(verbose_name='дата выезда')
     name = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    names = models.CharField(max_length=10, default='lalala')
-    # room_name = models.ForeignKey(RoomModel, )
+    room_name = models.ForeignKey(RoomModel, on_delete=models.CASCADE, default=1)
 
     class Meta:
         verbose_name = 'Бронирование'

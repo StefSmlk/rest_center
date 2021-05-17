@@ -1,5 +1,5 @@
+import datetime
 from django import forms
-
 from rooms.models import BookingRoomModel
 
 
@@ -11,24 +11,17 @@ class RoomBookForm(forms.ModelForm):
     start = forms.DateField(label='выберите дату заезда', widget=DateInput(format='%d.%m.%Y'))
     end = forms.DateField(label='выберите дату выезда', widget=DateInput(format='%d.%m.%Y'))
     name = BookingRoomModel.name
+    room_name = BookingRoomModel.room_name
 
     class Meta:
         model = BookingRoomModel
         fields = ('start', 'end',)
 
-    # def clean_calendar_start(self):
-    #     calendar_start = self.cleaned_data['calendar_start']
-    #     print(calendar_start)
-    #     print(datetime.date.today())
-    #     if calendar_start < datetime.date.today():
-    #         raise forms.ValidationError('дата указана неверно')
-    #     return calendar_start
-    #
-    # def clean_calendar_end(self):
-    #     calendar_end = self.cleaned_data['calendar_end']
-    #     calendar_start = RoomBookForm.clean_calendar_start(self)
-    #     if calendar_end < calendar_start:
-    #         raise forms.ValidationError('дата указана неверно')
-    #     return calendar_end
-
-
+    def clean(self, *args, **kwargs):
+        start = self.cleaned_data['start']
+        end = self.cleaned_data['end']
+        if start < datetime.date.today():
+            raise forms.ValidationError('дата заезда указана неверно')
+        if end < start:
+            raise forms.ValidationError('дата выезда указана неверно')
+        return super().clean(*args, **kwargs)

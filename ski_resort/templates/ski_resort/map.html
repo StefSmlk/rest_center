@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                  {% if request.user.is_authenticated and request.user.first_name %}
+                  {% if request.user.is_authenticated and request.user.username %}
                       <a class="nav-link" href="{% url 'logout' %}">Выход</a>
                   {% else %}
                       <a class="nav-link" href="{% url 'login' %}">Вход</a>
@@ -39,6 +39,11 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'hotel' %}">Общая информация</a></li>
                 <li><a class="dropdown-item" href="{% url 'rooms' %}">Забронировать номер</a></li>
+                  {% if user.is_authenticated and user.username %}
+                      <li>
+                        <a class="dropdown-item" href="{% url 'show' %}" >Мои бронирования</a>
+                      </li>
+                  {% endif %}
               </ul>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'forecast' %}" >Прогноз погоды</a>

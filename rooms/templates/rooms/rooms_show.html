@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    Номера
+{% endblock %}
+{% block body %}
+    {% if request.user.is_authenticated %}
+    <h3>Число Ваших бронирований: {{ list | length }}</h3>
+    <br>
+    <br>
+    {% for object in list %}
+        <h3>Дата въезда: {{ object.0.start }}, выезда: {{ object.0.end }}, номер: <a href="{% url 'booking' object.1.id %}"> {{ object.0.room_name }} </a></h3>
+    {% endfor %}
+    {% endif %}
+{% endblock %}

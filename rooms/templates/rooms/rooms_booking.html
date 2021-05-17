@@ -13,6 +13,14 @@
                 <img src="{{ context.photo.url }}" alt="...">
             </div>
             <div class="col align-self-end">
+                {% if book %}
+                    <div class="container text-center text-primary">
+                        <h3>Этот номер уже забронирован:</h3>
+                        {% for item in book.all %}
+                            <h4>с {{ item.start }} по {{ item.end }}</h4>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
                 <form method="post">
                     {% csrf_token %}
                     <h5 class="text-center">{{ room.start.label }} :
@@ -21,9 +29,14 @@
                     <h5 class="text-center">{{ room.end.label }} :
                         {{ room.end }}
                     </h5>
-                     <button type="submit" class="btn btn-secondary">
-                         забронировать
-                     </button>
+                    {% for error in room.non_field_errors %}
+                        <h3 class="text-center text-danger"> {{ error }} </h3>
+                    {% endfor %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-secondary">
+                            забронировать
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

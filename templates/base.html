@@ -41,6 +41,11 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'hotel' %}">Общая информация</a></li>
                 <li><a class="dropdown-item" href="{% url 'rooms' %}">Забронировать номер</a></li>
+                  {% if user.is_authenticated and user.username %}
+                      <li>
+                        <a class="dropdown-item" href="{% url 'show' %}" >Мои бронирования</a>
+                      </li>
+                  {% endif %}
               </ul>
             <li class="nav-item">
               <a class="nav-link {% if 'forecast/' in request.path %} active {% endif %}" href="{% url 'forecast' %}" >Прогноз погоды</a>
