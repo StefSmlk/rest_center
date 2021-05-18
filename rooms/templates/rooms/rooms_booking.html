@@ -14,13 +14,13 @@
             </div>
             <div class="col align-self-end">
                 {% if book %}
-                    <div class="container text-center text-primary">
+                    <div class="text-center text-primary">
                         <h3>Этот номер уже забронирован:</h3>
                         {% for item in book.all %}
                             <h4>с {{ item.start }} по {{ item.end }}</h4>
                         {% endfor %}
-                        {% endif %}
                     </div>
+                {% endif %}
                 <form method="post">
                     {% csrf_token %}
                     <h5 class="text-center">{{ room.start.label }} :
@@ -32,6 +32,7 @@
                     {% for error in room.non_field_errors %}
                         <h3 class="text-center text-danger"> {{ error }} </h3>
                     {% endfor %}
+                    <h5 class="text-center">стоимость: {{ price }} рублей в сутки</h5>
                     <div class="text-center">
                         <button type="submit" class="btn btn-secondary">
                             забронировать

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    Оплата
+{% endblock %}
+{% block body %}
+    <h2 class="text-center"><span class="text-capitalize">{{ user.username }}, </span>Вы бронируете номер {{ context.name }}</h2>
+    <h2 class="text-center">стоимость равна {{ price }} рублей</h2>
+    <div class="text-center">
+        <form method="post">
+        {% csrf_token %}
+            <button type="submit" class="btn btn-secondary">
+                оплатить
+            </button>
+        </form>
+    </div>
+{% endblock %}

@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 
 from rest_center.views import home
-from rooms.views import rooms_list, rooms_booking, hotel_view, rooms_show
+from rooms.views import rooms_list, rooms_booking, hotel_view, rooms_show, rooms_success, rooms_pay
 from accounts.views import login_view, logout_view, sign_up_view
 from forecasts.views import forecast_view
 from ski_resort.views import map_view, equipment_view, boards_view, skis_view, boots_view
@@ -29,8 +29,9 @@ urlpatterns = [
                     path('admin/', admin.site.urls),
                     path('hotel/rooms/', rooms_list, name='rooms'),
                     path('hotel/rooms/booking/<int:room_id>/', rooms_booking, name='booking'),
-                    path('hotel/rooms/booking/success/', rooms_booking, name='success'),
+                    path('hotel/rooms/booking/success/<int:room_id>/', rooms_success, name='success'),
                     path('hotel/rooms/booking/error/', rooms_booking, name='error'),
+                    path('hotel/rooms/booking/pay/<int:room_id>/<int:booking_id>', rooms_pay, name='pay'),
                     path('hotel/about/', hotel_view, name='hotel'),
                     path('hotel/rooms/booking/show/', rooms_show, name='show'),
                     path('account/create/', sign_up_view, name='sign_up'),

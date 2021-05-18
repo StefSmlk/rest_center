@@ -21,7 +21,12 @@ class BookingRoomModel(models.Model):
     end = models.DateField(verbose_name='дата выезда')
     name = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     room_name = models.ForeignKey(RoomModel, on_delete=models.CASCADE, default=1)
+    price = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = 'Бронирование'
         verbose_name_plural = 'Бронирования'
+
+    def __str__(self):
+        name_str = f"{self.name} с {self.start.__format__('%d.%m')} по {self.end.__format__('%d.%m')} номер {self.room_name}"
+        return name_str
