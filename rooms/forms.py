@@ -22,6 +22,6 @@ class RoomBookForm(forms.ModelForm):
         end = self.cleaned_data['end']
         if start < datetime.date.today():
             raise forms.ValidationError('дата заезда указана неверно')
-        if end < start:
+        if end <= start:
             raise forms.ValidationError('дата выезда указана неверно')
         return super().clean(*args, **kwargs)

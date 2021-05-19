@@ -4,14 +4,14 @@
     Погода
 {% endblock %}
 {% block body %}
-    <div class="container-fluid gradient">
-    <h1 class="text-center">Погода на курорте</h1>
+    <div class="container-fluid bg-forecast">
+    <h1 class="text-center text-white-new">Погода на курорте</h1>
     <br>
 
     <div class="text-center">
-        <h1>{{ weather.0.0.4 }} {{ weather.0.0.3 }} &#8451;</h1>
-        <h3>{{ weather.0.0.2 }}</h3>
-        <h3>ветер {{ weather.0.0.5 }} м/с</h3>
+        <h1 class="text-white-new"><img src="{% static weather.0.0.4 %}" class="small-icon" alt="...">{{ weather.0.0.3 }} &#8451;</h1>
+        <h3 class="text-white-new">{{ weather.0.0.2 }}</h3>
+        <h3 class="text-white-new">ветер {{ weather.0.0.5 }} м/с</h3>
     </div>
 
     <br>
@@ -20,11 +20,11 @@
         <div class="row">
         {% for day in date %}
             <div class="col-sm-2">
-                <div class="card">
-                    <a class="btn gradient" onclick="showText('{{ day.0 }}', '{{ day.1 }}', '{{ day.2 }}', '{{ day.3 }}', '{{ day.4 }}', '{{ day.5 }}')" href="javascript:void(0);">
-                        <h3>{{ day.6.2 }} {{ day.6.1 }}</h3>
-                        <h2>&#127757;</h2>
-                        <h3>{{ day.6.0 }}</h3>
+                <div class="card card-bg-1">
+                    <a class="btn" onclick="showText('{{ day.0 }}', '{{ day.1 }}', '{{ day.2 }}', '{{ day.3 }}', '{{ day.4 }}', '{{ day.5 }}')" href="javascript:void(0);">
+                        <h3 class="text-white-new">{{ day.6.2 }} {{ day.6.1 }}</h3>
+                        <h2 class="text-white-new"><img src="{% static 'rest_center/117.svg' %}" class="small-icon" alt="..."></h2>
+                        <h3 class="text-white-new">{{ day.6.0 }}</h3>
                     </a>
                 </div>
             </div>
@@ -40,15 +40,12 @@
                     {% if item.0 %}
                     <td>
                         <div class="card card-bg">
-                            <br>
-                            <h1 class="text-center">{{ item.4 }}</h1>
-                            <p class="text-center">{{ item.1 }} </p>
-                            <div class="card-body">
-                                <p class="card-text text-center">на улице {{ item.2 }}</p>
-                                <p class="card-text text-center">ветер {{ item.6 }}</p>
-                                <p class="card-text text-center"> {{ item.5 }} м/с</p>
-                                <h2 class="card-text text-center">{{ item.3 }} &#8451;</h2>
-                            </div>
+                            <img src="{% static item.4 %}" class="" alt="...">
+                            <p class="text-center text-white-new">{{ item.1 }} </p>
+                            <p class="card-text text-center text-white-new">на улице {{ item.2 }}</p>
+                            <p class="card-text text-center text-white-new">ветер {{ item.6 }}</p>
+                            <p class="card-text text-center text-white-new"> {{ item.5 }} м/с</p>
+                            <h2 class="card-text text-center text-white-new">{{ item.3 }} &#8451;</h2>
                         </div>
                     </td>
                     {% else %}

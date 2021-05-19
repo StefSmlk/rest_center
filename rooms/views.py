@@ -56,10 +56,19 @@ def rooms_pay(request, room_id, booking_id):
     if request.method == 'POST':
         booking_room.price = price
         booking_room.save()
-        return render(request, 'rooms/success.html', {'context': context, })
+        return render(request, 'rooms/success_pay.html', {'context': context, })
     return render(request, 'rooms/pay.html', {'context': context, 'price': price, })
 
 
 def rooms_success(request, room_id):
     context = get_object_or_404(RoomModel, pk=room_id)
-    return render(request, 'rooms/success.html', {'context': context, })
+    return render(request, 'rooms/success_pay.html', {'context': context, })
+
+
+def booking_delete(request, room_id, booking_id):
+    context = get_object_or_404(RoomModel, pk=room_id)
+    booking_room = BookingRoomModel.objects.get(pk=booking_id)
+    if request.method == 'POST':
+        booking_room.delete()
+        return render(request, 'rooms/success_delete.html', {'context': context, })
+    return render(request, 'rooms/delete.html', {'context': context, 'book': booking_room})

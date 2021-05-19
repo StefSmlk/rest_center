@@ -10,6 +10,28 @@
     background-attachment: fixed;
 }
 
+@media screen and (max-width: 1520px) {
+    .bg-map {
+        background-image: None;
+    }
+}
+
+@media screen and (max-width: 1520px) {
+    .bg-1 {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1520px) {
+    .bg-2 {
+        display: none;
+    }
+}
+
+p {
+    color: #505a50;
+}
+
 img {
   width: 100%;
   display: inline-block;
@@ -45,10 +67,21 @@ img {
 }
 
 .card-bg {
-    background-color: rgba(123, 184, 255, 0.4);
+    background-color: rgba(123, 184, 255, 0.2);
     width: 10rem;
-    height: 24rem;
+    height: 27rem;
 }
+
+.card-bg-1 {
+    background-color: rgba(123, 184, 255, 0.2);
+}
+
+.card-bg-2 {
+    background-image: url('../rest_center/112.jpg');
+    background-size: 100%;
+    height: 20rem;
+}
+
 
 div.hide { display:none }
 div.show { visibility: visible }
@@ -58,6 +91,30 @@ body {
     background-color: azure;
 }
 
-.gradient {
-    background: radial-gradient(rgba(225, 184, 255, 0.4), rgba(123, 184, 255, 0.6));
+.bg-forecast {
+    background-image: url('../rest_center/13.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
    }
+
+@media screen and (max-width: 1400px) {
+    .bg-forecast {
+        background: azure;
+    }
+}
+
+.text-white-new {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media screen and (max-width: 1400px) {
+    .text-white-new {
+        color: rgba(0, 127, 252, 0.58);
+    }
+}
+
+.small-icon {
+    width: 7rem;
+}

@@ -71,17 +71,17 @@ def forecast_view(request):
         if temperature > 0:
             temperature = '+'+str(temperature)
         if 'облачно' in sky:
-            temp = mark_safe('&#9925;')
+            temp = 'rest_center/111.svg'
         if 'ясно' in sky:
-            temp = mark_safe('&#9728;')
+            temp = 'rest_center/112.svg'
         if 'дождь' in sky:
-            temp = mark_safe('&#9748;')
+            temp = 'rest_center/113.svg'
         if 'пасмурно' in sky:
-            temp = mark_safe('&#9729;')
+            temp = 'rest_center/114.svg'
         if 'снег' in sky:
-            temp = mark_safe('&#10052;')
+            temp = 'rest_center/115.svg'
         if 'гроза' in sky:
-            temp = mark_safe('&#9928;')
+            temp = 'rest_center/116.svg'
         exist = any([date.split()[0] in days for days in date_lst])
         if not exist:
             if tmp_weather_lst:

@@ -19,10 +19,10 @@ from django.contrib import admin
 from django.urls import path
 
 from rest_center.views import home
-from rooms.views import rooms_list, rooms_booking, hotel_view, rooms_show, rooms_success, rooms_pay
+from rooms.views import rooms_list, rooms_booking, hotel_view, rooms_show, rooms_success, rooms_pay, booking_delete
 from accounts.views import login_view, logout_view, sign_up_view
 from forecasts.views import forecast_view
-from ski_resort.views import map_view, equipment_view, boards_view, skis_view, boots_view
+from ski_resort.views import map_view, equipment_view
 
 urlpatterns = [
                     path('', home, name='home'),
@@ -32,6 +32,7 @@ urlpatterns = [
                     path('hotel/rooms/booking/success/<int:room_id>/', rooms_success, name='success'),
                     path('hotel/rooms/booking/error/', rooms_booking, name='error'),
                     path('hotel/rooms/booking/pay/<int:room_id>/<int:booking_id>', rooms_pay, name='pay'),
+                    path('hotel/rooms/booking/delete/<int:room_id>/<int:booking_id>', booking_delete, name='delete'),
                     path('hotel/about/', hotel_view, name='hotel'),
                     path('hotel/rooms/booking/show/', rooms_show, name='show'),
                     path('account/create/', sign_up_view, name='sign_up'),
@@ -40,9 +41,6 @@ urlpatterns = [
                     path('forecast/', forecast_view, name='forecast'),
                     path('ski/map/', map_view, name='map'),
                     path('ski/equipment/', equipment_view, name='equipment'),
-                    path('ski/boards/', boards_view, name='boards'),
-                    path('ski/skis/', skis_view, name='skis'),
-                    path('ski/boots/', boots_view, name='boots'),
               ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

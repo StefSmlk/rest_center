@@ -15,10 +15,17 @@
             <div class="col align-self-end">
                 {% if book %}
                     <div class="text-center text-primary">
-                        <h3>Этот номер уже забронирован:</h3>
-                        {% for item in book.all %}
-                            <h4>с {{ item.start }} по {{ item.end }}</h4>
-                        {% endfor %}
+                            <h3>Этот номер уже забронирован</h3>
+                        <div class="btn-group">
+                          <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h3>посмотреть бронирования</h3>
+                          </button>
+                          <ul class="dropdown-menu">
+                              {% for item in book.all %}
+                                <li class="dropdown-item"><h4>с {{ item.start }} по {{ item.end }}</h4></li>
+                              {% endfor %}
+                          </ul>
+                        </div>
                     </div>
                 {% endif %}
                 <form method="post">

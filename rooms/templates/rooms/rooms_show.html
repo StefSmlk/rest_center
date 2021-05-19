@@ -18,6 +18,9 @@
             {% else %}
                 (оплачено)
             {% endif %}
+            <a href="{% url 'delete' object.1.id object.0.id %}" class="btn btn-secondary">
+                отказаться
+            </a>
         </h3>
     {% endfor %}
     {% endif %}
