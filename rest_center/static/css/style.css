@@ -86,12 +86,14 @@ img {
 .card-bg-2 {
     background-image: url('../rest_center/112.jpg');
     background-size: 100%;
+    background-repeat: no-repeat;
     height: 20rem;
 }
 
 .card-bg-3 {
     background-image: url('../rest_center/111.jpg');
     background-size: 100%;
+    background-repeat: no-repeat;
     height: 20rem;
 }
 
