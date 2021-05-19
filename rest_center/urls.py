@@ -42,3 +42,5 @@ urlpatterns = [
                     path('ski/map/', map_view, name='map'),
                     path('ski/equipment/', equipment_view, name='equipment'),
               ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
