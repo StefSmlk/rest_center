@@ -4,11 +4,11 @@
 {% endblock %}
 {% block body %}
     {% if request.user.is_authenticated %}
-    <h3>Число Ваших бронирований: {{ list | length }}</h3>
+    <h3 class="fst-italic text-center">Число Ваших бронирований: {{ list | length }}</h3>
     <br>
     <br>
     {% for object in list %}
-        <h3>Дата въезда: {{ object.0.start }}, выезда: {{ object.0.end }}, номер:
+        <h5 class="fst-italic text-center">Дата въезда: {{ object.0.start }}, выезда: {{ object.0.end }}, номер:
             <a href="{% url 'booking' object.1.id %}"> {{ object.0.room_name }} </a>
             {% if not object.0.price %}
                 (не оплачено)
@@ -21,7 +21,7 @@
             <a href="{% url 'delete' object.1.id object.0.id %}" class="btn btn-secondary">
                 отказаться
             </a>
-        </h3>
+        </h5>
     {% endfor %}
     {% endif %}
 {% endblock %}

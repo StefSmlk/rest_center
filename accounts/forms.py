@@ -6,8 +6,8 @@ User = get_user_model()
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='имя', widget=forms.TextInput(attrs={
-        'placeholder': 'введите имя'
+    username = forms.CharField(label='username', widget=forms.TextInput(attrs={
+        'placeholder': 'введите username'
     }))
     password = forms.CharField(label='пароль', widget=forms.PasswordInput(attrs={
         'placeholder': 'введите пароль'
@@ -29,8 +29,8 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(forms.ModelForm):
-    username = forms.CharField(label='имя', widget=forms.TextInput(attrs={
-        'placeholder': 'введите имя'
+    username = forms.CharField(label='username', widget=forms.TextInput(attrs={
+        'placeholder': 'введите username'
     }))
     password = forms.CharField(label='пароль', widget=forms.PasswordInput(attrs={
         'placeholder': 'введите пароль'

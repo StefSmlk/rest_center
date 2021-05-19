@@ -3,9 +3,10 @@
     Оплата
 {% endblock %}
 {% block body %}
-    <h2 class="text-center"><span class="text-capitalize">{{ user.username }}, </span>Вы бронируете номер {{ context.name }}</h2>
-    <h2 class="text-center">стоимость равна {{ price }} рублей</h2>
+    <h2 class="text-center fst-italic"><span class="text-capitalize">{{ user.username }}, </span>Вы бронируете номер {{ context.name }}</h2>
+    <h2 class="text-center fst-italic">стоимость равна {{ price }} рублей</h2>
     <div class="text-center">
+    <br>
         <form method="post">
         {% csrf_token %}
             <button type="submit" class="btn btn-secondary">
